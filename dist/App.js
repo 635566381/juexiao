@@ -381,6 +381,9 @@ Item.prototype.bindResizeHandle = function () {
 		var l1 = Math.sqrt(Math.pow(x, 2), Math.pow(y, 2));
 		var l2 = Math.sqrt(Math.pow(_this.sourceWidth / 2, 2), Math.pow(_this.sourceHeight / 2, 2));
 		_this.scale = l1 / l2;
+		if (_this.scale > 2 || _this.scale < 0.2) {
+			return;
+		}
 		_this.width = _this.sourceWidth * _this.scale;
 		_this.height = _this.sourceHeight * _this.scale;
 		_this.$itemElement.css({
@@ -418,7 +421,11 @@ Item.prototype.bindMoveHandle = function () {
 	this.$itemElement.on("touchstart", function (e) {
 		_main2.default.currentItem && _main2.default.currentItem.removeClass("active");
 		_main2.default.currentItem = _this.$itemElement;
-		_main2.default.currentItem.addClass("active").appendTo($("#room"));
+		if (_this.isRotateBtn) {
+			_main2.default.currentItem.addClass("active").appendTo($("#room"));
+		} else {
+			_main2.default.currentItem.addClass("active").prependTo($("#room"));
+		}
 		tx = e.touches[0].clientX - _this.$itemElement.offset().left - _this.width / 2;
 		ty = e.touches[0].clientY - _this.$itemElement.offset().top - _this.height / 2;
 		var s = _this.scale + 0.1;
