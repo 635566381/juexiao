@@ -105,11 +105,13 @@ Item.prototype.bindMoveHandle = function(){
 	this.$itemElement.on("touchstart",function(e){
 		App.currentItem && App.currentItem.removeClass("active");
 		App.currentItem = _this.$itemElement;
-		if(_this.isRotateBtn){
+        App.currentItem.addClass("active").appendTo($("#room"));
+        
+        /*if(_this.isRotateBtn){
             App.currentItem.addClass("active").appendTo($("#room"));
         }else{
             App.currentItem.addClass("active").prependTo($("#room"));
-        }
+        }*/
 		tx = e.touches[0].clientX - _this.$itemElement.offset().left - _this.width/2;
 		ty = e.touches[0].clientY - _this.$itemElement.offset().top - _this.height/2;
 		var s = _this.scale + 0.1;
