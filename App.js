@@ -421,11 +421,13 @@ Item.prototype.bindMoveHandle = function () {
 	this.$itemElement.on("touchstart", function (e) {
 		_main2.default.currentItem && _main2.default.currentItem.removeClass("active");
 		_main2.default.currentItem = _this.$itemElement;
-		if (_this.isRotateBtn) {
-			_main2.default.currentItem.addClass("active").appendTo($("#room"));
-		} else {
-			_main2.default.currentItem.addClass("active").prependTo($("#room"));
-		}
+		_main2.default.currentItem.addClass("active").appendTo($("#room"));
+
+		/*if(_this.isRotateBtn){
+      App.currentItem.addClass("active").appendTo($("#room"));
+  }else{
+      App.currentItem.addClass("active").prependTo($("#room"));
+  }*/
 		tx = e.touches[0].clientX - _this.$itemElement.offset().left - _this.width / 2;
 		ty = e.touches[0].clientY - _this.$itemElement.offset().top - _this.height / 2;
 		var s = _this.scale + 0.1;
