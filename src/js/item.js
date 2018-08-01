@@ -60,12 +60,14 @@ Item.prototype.bindResizeHandle = function(){
         e.preventDefault();
         e.stopPropagation()
 	}).on("touchmove",function(e){
+        e.preventDefault();
+        e.stopPropagation();
 		var x = e.touches[0].clientX - cx;
 		var y = e.touches[0].clientY - cy;
 		var l1 = Math.sqrt(Math.pow(x,2),Math.pow(y,2));
 		var l2 = Math.sqrt(Math.pow(_this.sourceWidth/2,2),Math.pow(_this.sourceHeight/2,2));
 		_this.scale = l1/l2;
-        if(_this.scale > 2 || _this.scale < 0.2){
+        if(_this.scale > 2.5 || _this.scale < 0.3){
             return;
         }
         _this.width = _this.sourceWidth * _this.scale;
@@ -105,13 +107,13 @@ Item.prototype.bindMoveHandle = function(){
 	this.$itemElement.on("touchstart",function(e){
 		App.currentItem && App.currentItem.removeClass("active");
 		App.currentItem = _this.$itemElement;
-        App.currentItem.addClass("active").appendTo($("#room"));
+        //App.currentItem.addClass("active").appendTo($("#room"));
         
-        /*if(_this.isRotateBtn){
+        if(_this.isRotateBtn){
             App.currentItem.addClass("active").appendTo($("#room"));
         }else{
             App.currentItem.addClass("active").prependTo($("#room"));
-        }*/
+        }
 		tx = e.touches[0].clientX - _this.$itemElement.offset().left - _this.width/2;
 		ty = e.touches[0].clientY - _this.$itemElement.offset().top - _this.height/2;
 		var s = _this.scale + 0.1;
