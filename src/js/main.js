@@ -1,7 +1,9 @@
 import Item from './item'
 import html2canvas from './html2canvas.min'
-import mp3 from '../media/bgm.mp3'
+// import mp3 from '../media/bgm.mp3'
 // import DATA from '../data'
+
+
 const App = {
     isClose: true,
 	init: function(option){

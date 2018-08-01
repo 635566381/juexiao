@@ -20,7 +20,7 @@ html, body {
   height: 100%;
   overflow: hidden;
   margin: 0 auto;
-  background: #000;
+  background: #fff;
 }
 
 @media all and (orientation: landscape) {
@@ -197,9 +197,17 @@ html, body {
 }
 
 .cs-room {
-  width: 100%;
+  box-sizing: border-box;
+  /*width: 100%;
   height: 100%;
+  padding-bottom: 200px;*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 200px;
   background: url(../img/Room.png) center bottom no-repeat;
+  background-size: 100% 100%;
   .cs-item {
     text-align: center;
     position: absolute;
