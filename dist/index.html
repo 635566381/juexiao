@@ -9,6 +9,20 @@
     <link rel="icon" href="./img/favicon.ico"/>
     <title>法考书桌-觉晓教育</title>
     <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script type=text/javascript>var pageWidth = 750;
+    if(/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+        var version = parseFloat(RegExp.$1);
+        if(version > 2.3) {
+            var phoneScale = parseInt(window.screen.width) / pageWidth;
+            var mtinfo = '<meta name="viewport" content="width=' + pageWidth + ', minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">'
+            document.write(mtinfo);
+            
+        } else {
+            document.write('<meta name="viewport" content="width=' + pageWidth + ', target-densitydpi=device-dpi">');
+        }
+    } else {
+        document.write('<meta name="viewport" content="width=' + pageWidth + ', user-scalable=no, target-densitydpi=device-dpi">');
+    }</script>
     <style>
         body, div, ul, li, img, p, a, h1, h2, h3, input {
             margin: 0px;

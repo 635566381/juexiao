@@ -115,7 +115,7 @@ const App = {
 			var data = dataList[i];
 			$('<li>').css({
 				"backgroundImage": "url("+ data.url +")",
-				"backgroundSize": data.width > data.height?"contain" : "auto 92%",
+				"backgroundSize":  "auto 50%",
 			}).data("index",i).appendTo(ul);
 		}
 		
@@ -140,6 +140,9 @@ const App = {
 			this.target = new createjs.LoadQueue();
     		this.target.installPlugin(createjs.Sound);
 			this.target.loadManifest(this.res);
+			/*this.target.on('fileload',function (e) {
+                $.get(e.item.src);
+            })*/
 	        this.target.on("progress", this.progress);
 	        this.target.on("complete", this.complete);
 		},

@@ -11,6 +11,7 @@ const distPath = './dist/img';
 var obj = {
     _res: []
 };
+const baseCDN = ''
 // console.log(images('src/img/Assest/Furniture/01.png').width())
 var copy = function(src, dst){
     let dirDevide = path.parse(src).name;
@@ -35,19 +36,18 @@ var copy = function(src, dst){
             // console.log(_src.substr(2))
             if(bool){
                 var img = images(_src.substr(2))
-                
                 var item = {
                     // id: index,
                     id: _src.substr(_src.lastIndexOf('/')+1,_src.length-1),
-                    url: _src.substr(6),
+                    url: baseCDN+_src.substr(6),
                     isrotatebtn: _src.indexOf('Items1') != -1? false: true,
-                    width: img.width(),
-                    height: img.height()
+                    width: img.width()/( _src.indexOf('Items1') != -1?1.5:3),
+                    height: img.height()/( _src.indexOf('Items1') != -1?1.5:3)
                 };
                 obj[dirDevide].push(item)
                 
             }
-            obj["_res"].push(_src.substr(6))
+            obj["_res"].push(baseCDN+_src.substr(6))
         }else if(st.isDirectory()){
             exists(_src, _dst, copy);
         }
